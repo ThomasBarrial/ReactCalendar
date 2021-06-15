@@ -1,23 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Picker from './picker.jsx';
+import DayRecord from './dayRecord';
 
-import logo from './logo.png';
 import './App.css';
 
 function App() {
+  const [dayActive, setDayActive] = useState(true);
+  const [newDate, setNewDate] = useState(new Date());
+  console.log(newDate);
   return (
-    <main className="flex flex-col justify-center items-center h-screen">
-      <div className="text-center p-4 pb-8">
-        <img src={logo} width="20%" alt="WCS logo" className="my-0 mx-auto" />
-      </div>
-      <div className="text-center p-4 pb-8">
-        <p>Welcome to your fresh, lightweight, React App ! &#127752;</p>
-      </div>
-      <div className="text-center p-4 pb-8">
-        <p>
-          Start in the <code>App.jsx</code> component !
-        </p>
-      </div>
-    </main>
+    <div className=" flex flex-col h-screen bg-darkGray justify-center items-center">
+      <h1 className="text-white mb-5 text-2xl font-bold">React Calendar</h1>
+      {dayActive ? <Picker setDayActive={setDayActive} setNewDate={setNewDate} /> : <DayRecord newDate={newDate} setDayActive={setDayActive} />}
+    </div>
   );
 }
 
